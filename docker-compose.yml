@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./
+    container_name: server
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgresdb
+    env_file:
+      - .env
+  postgresdb:
+    build: ./database/
+    container_name: makves_postgres
+    ports:
+    - "5438:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=poka_ne_znayu
+      - POSTGRES_DB=makves
+      - SSL_MODE=disable
