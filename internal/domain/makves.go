@@ -111,5 +111,5 @@ type Makves struct {
 }
 
 var (
-	ErrDataNotFound = errors.New("task not fount")
+	ErrDataNotFound = errors.New("data not fount")
 )
