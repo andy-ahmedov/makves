@@ -66,11 +66,11 @@ func (h *Handler) Get(c *gin.Context) {
 	makvesData, err := h.service.GetData(context.TODO(), ids)
 	if err != nil {
 		if errors.Is(err, domain.ErrDataNotFound) {
-			logError("getBook", "there is no book with the given identifier", err)
+			logError("get-items", "there are no rows with this identifier", err)
 			c.JSON(http.StatusBadRequest, errResponse{Message: fmt.Sprintf("StatusBadRequest: %s", err.Error())})
 			return
 		}
-		logError("getBook", "reading data from a database", err)
+		logError("get-items", "reading data from a database", err)
 		c.JSON(http.StatusInternalServerError, errResponse{Message: fmt.Sprintf("InternalServerError: %s", err.Error())})
 		return
 	}
